@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API de Música</title>
+</head>
+
+<body>
+    <h1>Buscador de Música</h1>
+    <p>Introduce el nombre de la canción, el álbum y el artista que deseas buscar.</p>
+    <form action="/consulta" method="post">
+        <label>Canción:</label>
+        <input type="text" name="cancion" placeholder=" canción" required="required"><br>
+
+        <label>Álbum:</label>
+        <input type="text" name="album" placeholder=" álbum" required="required"><br>
+      
+        <label>Artista:</label>
+        <input type="text" name="artista" placeholder=" artista" required="required"><br>
+      
+        <button type="submit">Buscar</button>
+    </form>
+
+    <p>
+        Información de la búsqueda: <br>
+        
+        <p>
+            <strong> Id:</strong> {{.Id}} <br> 
+            <strong> Canción:</strong> {{.Song}} <br> 
+            <strong> Álbum:</strong> {{.Album}}  <br>
+            <strong> Artista:</strong> {{.Artist}} <br>
+            <strong> Duración:</strong> {{.Duration}} <br> 
+            <strong> Portada:</strong><a href="{{.Artwork}}"> {{.Artwork}} </a><br>
+            <strong> Precio:</strong> {{.Price}} <br>  
+            <strong> Origen:</strong> itunes <br> 
+            <strong> Letras:</strong><a href="{{.Url}}"> {{.Url}} </a><br>
+        </p>
+    </p>
+
+</body>
+
+</html>
