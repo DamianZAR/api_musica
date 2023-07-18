@@ -6,7 +6,7 @@
 
 <body>
     <h1>Buscador de Música</h1>
-    <p>Introduce el nombre de la canción, el álbum y el artista que deseas buscar.</p>
+    <p>Introduce el nombre de la canción, el álbum y el artista que deseas buscar..</p>
     <form action="/consulta" method="post">
         <label>Canción:</label>
         <input type="text" name="cancion" placeholder=" canción" required="required"><br>
@@ -21,8 +21,8 @@
     </form>
 
     <p>
-        Información de la búsqueda: <br>
-        
+        El resultado se desplegará en formato json. <br>
+        <!--
         <p>
             <strong> Id:</strong> {{.Id}} <br> 
             <strong> Canción:</strong> {{.Song}} <br> 
@@ -34,6 +34,7 @@
             <strong> Origen:</strong> itunes <br> 
             <strong> Letras:</strong><a href="{{.Url}}"> {{.Url}} </a><br>
         </p>
+        -->
     </p>
 
 </body>

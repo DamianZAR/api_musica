@@ -43,14 +43,13 @@ type musica struct {
 }
 
 func consulta(w http.ResponseWriter, r *http.Request) {
-	template, _ := template.ParseFiles("templates/index.html")
+	//template, _ := template.ParseFiles("templates/index.html")
 
 	song := r.FormValue("cancion")
 	album := r.FormValue("album")
 	artist := r.FormValue("artista")
 
 	//Descarga y lectura de la respuesta json
-	//url_api :=
 	descargaApple(song, album, artist)
 	sl := read_json()
 
@@ -95,7 +94,9 @@ func consulta(w http.ResponseWriter, r *http.Request) {
 
 	cancion := musica{id, song_f, album_f, artist_f, duration, artwork, price, origin, url_lyr}
 
-	template.Execute(w, cancion)
+	json.NewEncoder(w).Encode(cancion)
+
+	//template.Execute(w, cancion)
 }
 
 func descargaApple(song, album, artist string) string {
@@ -104,11 +105,10 @@ func descargaApple(song, album, artist string) string {
 	cancion_mod = strings.ToLower(cancion_mod)
 
 	root := "https://itunes.apple.com/search?term="
-	middleroot := "&media=music&entity="
-	endroot := "song&attribute=songTerm&limit=150"
+	endroot := "&media=music&entity=song&attribute=songTerm&limit=150"
 
 	//Descarga de la respuesta de la API de apple
-	url_api := root + cancion_mod + middleroot + endroot
+	url_api := root + cancion_mod + endroot
 	response, err := http.Get(url_api)
 	if err != nil {
 		panic(err)
